@@ -1,5 +1,4 @@
-﻿using System;
-using System.Net;
+﻿using System.Net;
 using EFxceptions.Cosmos.Models.Exceptions;
 
 namespace EFxceptions.Cosmos.Services
@@ -11,9 +10,8 @@ namespace EFxceptions.Cosmos.Services
             switch (statusCode)
             {
                 case HttpStatusCode.Conflict:
-                    throw new ConflictException(message);
+                    throw new DuplicateKeyException(message);
             }
         }
-
     }
 }

@@ -1,5 +1,5 @@
-﻿using Microsoft.Azure.Cosmos;
-using System.Net;
+﻿using System.Net;
+using Microsoft.Azure.Cosmos;
 
 namespace EFxceptions.Cosmos.Brokers
 {

@@ -1,14 +1,12 @@
-﻿using System.Net;
-using System;
-using Xunit;
-using Moq;
+﻿using System;
+using System.Net;
 using EFxceptions.Cosmos.Brokers;
-using EFxceptions.Cosmos.Services;
-using Microsoft.EntityFrameworkCore;
-using Microsoft.Azure.Cosmos;
 using EFxceptions.Cosmos.Models.Exceptions;
-using System.Runtime.Serialization;
+using EFxceptions.Cosmos.Services;
+using Microsoft.Azure.Cosmos;
+using Moq;
 using Tynamix.ObjectFiller;
+using Xunit;
 
 namespace EFxceptions.Cosmos.Tests
 {
@@ -29,20 +27,23 @@ namespace EFxceptions.Cosmos.Tests
         public void ShouldThrowConflictException()
         {
             // given
-            var randomErrorMessage = CreateRandomErrorMessage();
+            string randomErrorMessage = CreateRandomErrorMessage();
             CosmosException cosmosException = CreateException(randomErrorMessage);
-            var exception = new Exception(cosmosException.Message, cosmosException);
+            Exception exception = new Exception(cosmosException.Message, cosmosException);
 
-            sqlErrorBrokerMock.Setup(broker => broker.GetErrorCode(It.IsAny<CosmosException>()))
-                .Returns(HttpStatusCode.Conflict);
+            sqlErrorBrokerMock.Setup(broker =>
+                broker.GetErrorCode(It.IsAny<CosmosException>()))
+                    .Returns(HttpStatusCode.Conflict);
 
             // when . then
-            Assert.Throws<ConflictException>(() => efxceptionService.ThrowMeaningfulException(exception));
+            Assert.Throws<DuplicateKeyException>(() =>
+                efxceptionService.ThrowMeaningfulException(exception));
         }
 
         private CosmosException CreateException(string randomMessage)
         {
-            return new CosmosException(randomMessage, HttpStatusCode.Conflict, 0, randomMessage, 0);
+            return new CosmosException(randomMessage,
+                HttpStatusCode.Conflict, 0, randomMessage, 0);
         }
 
         private string CreateRandomErrorMessage() => new MnemonicString().GetValue();
