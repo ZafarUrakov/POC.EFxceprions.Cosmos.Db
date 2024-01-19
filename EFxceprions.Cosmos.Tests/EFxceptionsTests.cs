@@ -1,4 +1,11 @@
-﻿using System;
+﻿// ---------------------------------------------------------------
+// Copyright (c) T. Jamshid & U. Zafar
+// All rights reserved.
+// Licensed under the MIT License.
+// See License.txt in the project root for license information.
+// ---------------------------------------------------------------
+
+using System;
 using System.Net;
 using EFxceptions.Cosmos.Brokers;
 using EFxceptions.Cosmos.Models.Exceptions;

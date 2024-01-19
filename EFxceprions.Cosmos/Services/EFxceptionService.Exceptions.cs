@@ -1,4 +1,11 @@
-﻿using System.Net;
+﻿// ---------------------------------------------------------------
+// Copyright (c) T. Jamshid & U. Zafar
+// All rights reserved.
+// Licensed under the MIT License.
+// See License.txt in the project root for license information.
+// ---------------------------------------------------------------
+
+using System.Net;
 using EFxceptions.Cosmos.Models.Exceptions;
 
 namespace EFxceptions.Cosmos.Services
