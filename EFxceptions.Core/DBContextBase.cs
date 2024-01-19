@@ -1,8 +1,8 @@
 ﻿using System;
-using System.Threading.Tasks;
 using System.Threading;
-using EFxceptions.Cosmos.Services;
+using System.Threading.Tasks;
 using EFxceptions.Cosmos.Brokers;
+using EFxceptions.Cosmos.Services;
 using Microsoft.EntityFrameworkCore;
 
 namespace EFxceptions.Core
@@ -52,9 +52,9 @@ namespace EFxceptions.Core
             {
                 return await base.SaveChangesAsync(acceptAllChangesOnSuccess, cancellationToken);
             }
-            catch (Exception Exception)
+            catch (Exception exception)
             {
-                this.eFxceptionService.ThrowMeaningfulException(Exception);
+                this.eFxceptionService.ThrowMeaningfulException(exception);
 
                 throw;
             }
@@ -66,9 +66,9 @@ namespace EFxceptions.Core
             {
                 return base.SaveChanges();
             }
-            catch (Exception Exception)
+            catch (Exception exception)
             {
-                this.eFxceptionService.ThrowMeaningfulException(Exception);
+                this.eFxceptionService.ThrowMeaningfulException(exception);
 
                 throw;
             }
@@ -81,9 +81,9 @@ namespace EFxceptions.Core
             {
                 return base.SaveChanges(acceptAllChangesOnSuccess);
             }
-            catch (Exception Exception)
+            catch (Exception exception)
             {
-                this.eFxceptionService.ThrowMeaningfulException(Exception);
+                this.eFxceptionService.ThrowMeaningfulException(exception);
 
                 throw;
             }
