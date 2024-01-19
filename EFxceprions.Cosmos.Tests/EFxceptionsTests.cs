@@ -31,7 +31,7 @@ namespace EFxceptions.Cosmos.Tests
         }
 
         [Fact]
-        public void ShouldThrowConflictException()
+        public void ShouldThrowDuplicateKeyException()
         {
             // given
             string randomErrorMessage = CreateRandomErrorMessage();
