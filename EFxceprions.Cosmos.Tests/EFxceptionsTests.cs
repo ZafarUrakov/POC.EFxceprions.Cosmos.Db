@@ -51,7 +51,7 @@ namespace EFxceptions.Cosmos.Tests
         private CosmosException CreateException(string randomMessage)
         {
             return new CosmosException(randomMessage,
-                HttpStatusCode.Conflict, 1, randomMessage, 0);
+                HttpStatusCode.Conflict, 0, randomMessage, 0);
         }
 
         private string CreateRandomErrorMessage() => new MnemonicString().GetValue();
