@@ -9,6 +9,7 @@ using System;
 using System.Net;
 using EFxceptions.Cosmos.Brokers;
 using Microsoft.Azure.Cosmos;
+using Microsoft.EntityFrameworkCore;
 
 namespace EFxceptions.Cosmos.Services
 {
@@ -19,7 +20,7 @@ namespace EFxceptions.Cosmos.Services
         public EFxceptionService(ICosmosDbBroker errorBroker) =>
             this.errorBroker = errorBroker;
 
-        public void ThrowMeaningfulException(Exception exception)
+        public void ThrowMeaningfulException(DbUpdateException exception)
         {
             ValidateInnerException(exception);
             CosmosException cosmosException = GetException(exception.InnerException);

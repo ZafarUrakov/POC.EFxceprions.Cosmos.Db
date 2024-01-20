@@ -6,12 +6,13 @@
 // ---------------------------------------------------------------
 
 using System;
+using Microsoft.EntityFrameworkCore;
 
 namespace EFxceptions.Cosmos.Services
 {
     public partial class EFxceptionService
     {
-        private void ValidateInnerException(Exception exception)
+        private void ValidateInnerException(DbUpdateException exception)
         {
             if (exception.InnerException == null)
             {
