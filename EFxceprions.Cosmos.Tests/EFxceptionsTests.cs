@@ -11,6 +11,7 @@ using EFxceptions.Cosmos.Brokers;
 using EFxceptions.Cosmos.Models.Exceptions;
 using EFxceptions.Cosmos.Services;
 using Microsoft.Azure.Cosmos;
+using Microsoft.EntityFrameworkCore;
 using Moq;
 using Tynamix.ObjectFiller;
 using Xunit;
@@ -36,7 +37,7 @@ namespace EFxceptions.Cosmos.Tests
             // given
             string randomErrorMessage = CreateRandomErrorMessage();
             CosmosException cosmosException = CreateException(randomErrorMessage);
-            Exception exception = new Exception(cosmosException.Message, cosmosException);
+            DbUpdateException exception = new DbUpdateException(cosmosException.Message, cosmosException);
 
             sqlErrorBrokerMock.Setup(broker =>
                 broker.GetErrorCode(It.IsAny<CosmosException>()))

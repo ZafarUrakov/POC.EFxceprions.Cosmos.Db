@@ -6,11 +6,12 @@
 // ---------------------------------------------------------------
 
 using System;
+using Microsoft.EntityFrameworkCore;
 
 namespace EFxceptions.Cosmos.Services
 {
     public interface IEFxceptionService
     {
-        void ThrowMeaningfulException(Exception exception);
+        void ThrowMeaningfulException(DbUpdateException exception);
     }
 }
